@@ -22,11 +22,19 @@ class Invoices:
                 return item
         return False
 
-    def search_invoice(self, search_params):
-        pass
+    def search_invoice(self,search_starategy_obj ,search_params):
+        search_starategy_obj.searching(search_params)
 
     def list_invoices(self):
         return self.invoices
+
+    def get_invoices_per_supplier(supplier):
+        result_list = []
+        for i in self.invoices:
+            if i.supplier is supplier:
+                result_list.append(i)
+        return result_list
+
 
 
 all_invoices = Invoices()

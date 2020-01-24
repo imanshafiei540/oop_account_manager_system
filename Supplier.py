@@ -4,7 +4,7 @@ from InvoiceExpense import InvoiceExpense
 from InvoicePurchase import InvoicePurchase
 
 class Supplier:
-    def __init__(name, phonenumber, invoice_obj=None,balance_strategy_obj=None):
+    def __init__(self,name, phonenumber, invoice_obj=None,balance_strategy_obj=None):
         self.name = name
         self.phonenumber = phonenumber
         self.invoice_obj = invoice_obj
@@ -23,10 +23,10 @@ class Supplier:
         debtor_amount = calculate_balance(DebtorBalanceStrategy)
         creditor_amount = calculate_balance(CreditorBalanceStrategy)
 
-    def get_balancestrategyobj(self,):
+    def get_balancestrategyobj(self):
         return self.balance_strategy_obj
 
-    def get_invoiceobj(self,):
+    def get_invoiceobj(self):
         return self.invoice_obj
 
     def get_inventoryobj(self):
