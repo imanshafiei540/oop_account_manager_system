@@ -1,4 +1,4 @@
-from InvoiceFactory import InvoiceFactory
+import datetime
 
 
 class Invoice:
@@ -8,6 +8,7 @@ class Invoice:
         self.tax = tax
         self.discount = discount
         self.total_price = total_price
+        self.created_date = datetime.datetime.now().date()
         self.supplier = supplier
 
     def set_factor_number(self, factor_number):
@@ -26,6 +27,17 @@ class Invoice:
 
     def set_total_price(self, total_price):
         self.total_price = total_price
+
+    def __str__(self):
+        return {
+            "factor_number": self.factor_number,
+            "settlement_type": self.settlement_type,
+            "tax": self.tax,
+            "discount": self.discount,
+            "total_price": self.total_price,
+            "created_date": self.created_date,
+            "supplier": self.supplier
+        }
 
 
     @staticmethod
