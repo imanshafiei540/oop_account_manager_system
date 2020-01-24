@@ -22,8 +22,9 @@ class Invoices:
                 return item
         return False
 
-    def search_invoice(self,search_starategy_obj ,search_params):
-        search_starategy_obj.searching(search_params)
+    @staticmethod
+    def search_invoice(search_strategy_obj ,search_params):
+        return search_starategy_obj.searching(search_params)
 
     def list_invoices(self):
         return self.invoices

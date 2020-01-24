@@ -4,19 +4,16 @@ from InvoiceExpense import InvoiceExpense
 from InvoicePurchase import InvoicePurchase
 
 class Supplier:
-    def __init__(self,name, phonenumber, invoice_obj=None,balance_strategy_obj=None):
+    def __init__(self,name, phonenumber):
         self.name = name
         self.phonenumber = phonenumber
-        self.invoice_obj = invoice_obj
-        self.balance_strategy_obj = balance_strategy_obj
 
     @staticmethod
-    def create_supplier(name, phonenumber, invoice_obj=None, balance_strategy_obj=None):
-        return Supplier(name, phonenumber, invoice_obj, balance_strategy_obj)
+    def create_supplier(name, phonenumber):
+        return Supplier(name, phonenumber)
 
     def calculate_balance(self,balance_strategy_obj):
-        # call a function from invoice that get supplier object and return its invoices
-        my_invoices = Invoices.get_invoices_per_supplier(self) # return dictionary contains of creditors and debtors invoices
+        my_invoices = Invoices.get_invoices_per_supplier(self)
         return balance_strategy_obj.balance(my_invoices)
 
     def calculate_total_balance(self):

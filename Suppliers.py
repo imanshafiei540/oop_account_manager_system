@@ -7,8 +7,8 @@ class Suppliers:
     def delete_supplier(self,supplierObj):
         self.suppliers.remove(supplierObj)
 
-    def add_supplier(self):
-        self.suppliers.append(Supplier.create_supplier())
+    def add_supplier(self,name, phonenumber):
+        self.suppliers.append(Supplier.create_supplier(name, phonenumber))
 
     def update_supplier(self):
         pass
