@@ -50,20 +50,40 @@ print(' -------------------------------------------------- ')
 
 
 Invoices = Invoices()
-first_invoice = Invoices.add_invoice('EXPENSE', 1, 'cash', None, None, 100000, first_supplier)
-print(' [Invoices] : First Invoice Object is created\nFactor Number is :', first_invoice)
+first_invoice = Invoices.add_invoice('EXPENSE', 1, 'cash', 0, 0, 100000, first_supplier)
+print(' [Invoices] : First Invoice (Expense) Object is created\nFactor Number is :', first_invoice.invoice_object)
 print(' -------------------------------------------------- ')
 
-second_invoice = Invoices.add_invoice('PURCHASE', 2, 'credit', None, None, 12500000, first_supplier)
-print(' [Invoices] : Second Invoice Object is created\nFactor Number is :', second_invoice)
+
+first_list_of_products = [ProductToPurchase(product=first_product, price=10000, numbers=2),
+                          ProductToPurchase(product=second_product, price=20000, numbers=4)]
+print(' [Product To Purchase] : First Product to Purchase list of Objects is created. ')
+for item in first_list_of_products:
+    print(item)
 print(' -------------------------------------------------- ')
 
-third_invoice = Invoices.add_invoice('EXPENSE', 3, 'cash', None, None, 100000, second_supplier)
-print(' [Invoices] : Third Invoice Object is created\nFactor Number is :', third_invoice)
+
+second_invoice = Invoices.add_invoice('PURCHASE', 2, 'credit', 0, 0, 100000, first_supplier)
+second_invoice.set_products_to_purchase(first_list_of_products)
+print(' [Invoices] : Second Invoice (Purchase) Object is created\nFactor Number is :', second_invoice.invoice_object)
 print(' -------------------------------------------------- ')
 
-fourth_invoice = Invoices.add_invoice('PURCHASE', 4, 'credit', None, None, 100000, second_supplier)
-print(' [Invoices] : Fourth Invoice Object is created\nFactor Number is :', fourth_invoice)
+third_invoice = Invoices.add_invoice('EXPENSE', 3, 'credit', 0, 0, 100000, second_supplier)
+print(' [Invoices] : Third Invoice Object is created\nFactor Number is :', third_invoice.invoice_object)
+print(' -------------------------------------------------- ')
+
+
+second_list_of_products = [ProductToPurchase(product=second_product, price=20000, numbers=4),
+                          ProductToPurchase(product=third_product, price=30000, numbers=6)]
+print(' [Product To Purchase] : Second Product to Purchase list of Objects is created. ')
+for item in second_list_of_products:
+    print(item)
+print(' -------------------------------------------------- ')
+
+
+fourth_invoice = Invoices.add_invoice('PURCHASE', 4, 'credit', 0, 0, 260000, second_supplier)
+fourth_invoice.set_products_to_purchase(second_list_of_products)
+print(' [Invoices] : Fourth Invoice Object is created\nFactor Number is :', fourth_invoice.invoice_object)
 print(' -------------------------------------------------- ')
 
 

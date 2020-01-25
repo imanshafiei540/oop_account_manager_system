@@ -14,7 +14,7 @@ class ProductToPurchase:
         self.numbers = numbers
 
     def __str__(self):
-        return str(self.product)
+        return str("Product Name : " + str(self.product) + " Price: " + str(self.price )+ " Numbers: " + str(self.numbers))
 
 
 

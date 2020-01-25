@@ -12,9 +12,9 @@ class Invoices:
     def add_invoice(self, invoice_type, *args, **kwargs):
         invoice_object = Invoice.create_invoice(*args, **kwargs)
         invoice_type_object = InvoiceFactory.generate_invoice_object(invoice_type=invoice_type)
-        invoice_type_object.create_invoice(invoice_object=invoice_object)
-        self.invoices.append(invoice_type_object)
-        return invoice_object
+        new_invoice = invoice_type_object.create_invoice(invoice_object=invoice_object)
+        self.invoices.append(new_invoice)
+        return new_invoice
 
     def get_invoice(self, factor_number):
         for item in self.invoices:
