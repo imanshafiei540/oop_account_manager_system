@@ -1,4 +1,4 @@
-from BalanceStrategy import BalanceStrategy
+from BalanceStrategy import BalanceStrategy, DebtorBalanceStrategy, CreditorBalanceStrategy
 from Inventory import Inventory
 from Invoice import Invoice
 from InvoiceExpense import InvoiceExpense
@@ -55,6 +55,9 @@ third_product = inventory.add_product('Sugar', 10000, 4, None, 'consumable')
 print(bcolors.OKGREEN + bcolors.BOLD + ' [Inventory] : Third Product Object is created\nName is :', third_product)
 print(bcolors.ENDC + ' -------------------------------------------------- ')
 
+fourth_product = inventory.add_product('Tea', 80000, 5, None, 'consumable')
+print(bcolors.OKGREEN + bcolors.BOLD + ' [Inventory] : Fourth Product Object is created\nName is :', fourth_product)
+print(bcolors.ENDC + ' -------------------------------------------------- ')
 
 Invoices = Invoices()
 first_invoice = Invoices.add_invoice('EXPENSE', 1, 'cash', 0, 0, 100000, first_supplier)
@@ -93,8 +96,16 @@ fourth_invoice.set_products_to_purchase(second_list_of_products)
 print(bcolors.OKGREEN + bcolors.BOLD + ' [Invoices] : Fourth Invoice Object is created\nFactor Number is :', fourth_invoice.invoice_object)
 print(bcolors.ENDC + ' -------------------------------------------------- ')
 
+products = inventory.products
+search_strategy = SearchByName()
+result = search_strategy.searching(products, {'name': 'Tea'})
+print(bcolors.OKGREEN + bcolors.BOLD + ' [SearchByName] : ',  str(len(result)) + ' Result found')
+print(bcolors.ENDC + ' -------------------------------------------------- ')
 
-
+# balance_strategy = DebtorBalanceStrategy()
+# result = first_supplier.calculate_balance(balance_strategy)
+# print(bcolors.OKGREEN + bcolors.BOLD + ' [SearchByName] : ',  result + ' Result found')
+# print(bcolors.ENDC + ' -------------------------------------------------- ')
 
 
 
