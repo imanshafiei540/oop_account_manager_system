@@ -29,15 +29,7 @@ class Invoice:
         self.total_price = total_price
 
     def __str__(self):
-        return {
-            "factor_number": self.factor_number,
-            "settlement_type": self.settlement_type,
-            "tax": self.tax,
-            "discount": self.discount,
-            "total_price": self.total_price,
-            "created_date": self.created_date,
-            "supplier": self.supplier
-        }
+        return str(self.factor_number)
 
 
     @staticmethod

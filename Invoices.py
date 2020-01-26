@@ -24,12 +24,12 @@ class Invoices:
 
     @staticmethod
     def search_invoice(search_strategy_obj ,search_params):
-        return search_starategy_obj.searching(search_params)
+        return search_strategy_obj.searching(search_params)
 
     def list_invoices(self):
         return self.invoices
 
-    def get_invoices_per_supplier(supplier):
+    def get_invoices_per_supplier(self, supplier):
         result_list = []
         for i in self.invoices:
             if i.supplier is supplier:

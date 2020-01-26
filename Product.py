@@ -29,6 +29,9 @@ class Product:
     def get_specs(self):
         return self.product_specs
 
+    def __str__(self):
+        return self.name
+
     @staticmethod
     def create(name, price, numbers, product_spec_obj):
         return Product(name, price, numbers, product_spec_obj)

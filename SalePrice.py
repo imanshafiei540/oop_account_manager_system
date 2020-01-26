@@ -9,6 +9,10 @@ class SalePrice:
         self.sale_price = sale_price
         return self.sale_price
 
+    def __str__(self):
+        return self.sale_price
+
     @staticmethod
     def create(sale_price):
         return SalePrice(sale_price)
+

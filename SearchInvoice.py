@@ -16,8 +16,8 @@ class SearchInvoiceByDate(SearchInvoice):
                 result_list.append(i)
         return result_list
 
-class SearchInvoiceBySettlementType(self,SearchInvoice):
-    def __init__():
+class SearchInvoiceBySettlementType(SearchInvoice):
+    def __init__(self):
         pass
 
     def searching(dict):
