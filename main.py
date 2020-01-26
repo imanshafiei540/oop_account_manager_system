@@ -12,7 +12,7 @@ from ProductToPurchase import ProductToPurchase
 from ProductType import ProductType
 from SalePrice import SalePrice
 from SearchByName import SearchByName
-from SearchInvoice import SearchInvoice
+from SearchInvoice import *
 from SearchProductStrategy import SearchProductStrategy
 from Supplier import Supplier
 from Suppliers import Suppliers
@@ -96,19 +96,27 @@ fourth_invoice.set_products_to_purchase(second_list_of_products)
 print(bcolors.OKGREEN + bcolors.BOLD + ' [Invoices] : Fourth Invoice Object is created\nFactor Number is :', fourth_invoice.invoice_object)
 print(bcolors.ENDC + ' -------------------------------------------------- ')
 
+first_invoice_pay = Invoices.add_invoice('PAY', 5, 'cash', 0, 0, 50000, first_supplier)
+print(bcolors.OKGREEN + bcolors.BOLD + ' [Invoices] : First Invoice Pay Object is created\nFactor Number is :', first_invoice_pay.invoice_object)
+print(bcolors.ENDC + ' -------------------------------------------------- ')
+
 products = inventory.products
 search_strategy = SearchByName()
 result = search_strategy.searching(products, {'name': 'Tea'})
-print(bcolors.OKGREEN + bcolors.BOLD + ' [SearchByName] : ',  str(len(result)) + ' Result found')
+print(bcolors.OKGREEN + bcolors.BOLD + ' [SearchByName] : ',  str(result) + ' Result found')
 print(bcolors.ENDC + ' -------------------------------------------------- ')
 
-# balance_strategy = DebtorBalanceStrategy()
-# result = first_supplier.calculate_balance(balance_strategy)
-# print(bcolors.OKGREEN + bcolors.BOLD + ' [SearchByName] : ',  result + ' Result found')
-# print(bcolors.ENDC + ' -------------------------------------------------- ')
+balance_strategy = DebtorBalanceStrategy()
+result = first_supplier.calculate_balance(Invoices,balance_strategy)
+print(bcolors.OKGREEN + bcolors.BOLD + ' [Debtor Strategy] : ',  str(result) + ' Debt.')
+print(bcolors.ENDC + ' -------------------------------------------------- ')
 
+balance_strategy = CreditorBalanceStrategy()
+result = first_supplier.calculate_balance(Invoices,balance_strategy)
+print(bcolors.OKGREEN + bcolors.BOLD + ' [Creditor Strategy] : ',  str(result) + ' Debt.')
+print(bcolors.ENDC + ' -------------------------------------------------- ')
 
-
-
-
-
+search_invoice = SearchInvoiceBySettlementType()
+result = search_invoice.searching(Invoices.list_invoices(),{'settlement_type':"cash"})
+print(bcolors.OKGREEN + bcolors.BOLD + ' [SearchInvoiceBySettlementType] : ',  str(result) + ' Result found')
+print(bcolors.ENDC + ' -------------------------------------------------- ')

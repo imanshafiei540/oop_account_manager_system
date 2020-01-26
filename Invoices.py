@@ -32,7 +32,7 @@ class Invoices:
     def get_invoices_per_supplier(self, supplier):
         result_list = []
         for i in self.invoices:
-            if i.supplier is supplier:
+            if i.invoice_object.supplier is supplier:
                 result_list.append(i)
         return result_list
 

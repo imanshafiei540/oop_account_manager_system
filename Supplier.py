@@ -10,8 +10,8 @@ class Supplier:
     def create_supplier(name, phone_number):
         return Supplier(name, phone_number)
 
-    def calculate_balance(self,balance_strategy_obj):
-        my_invoices = Invoices.get_invoices_per_supplier(self)
+    def calculate_balance(self,invoices,balance_strategy_obj):
+        my_invoices = invoices.get_invoices_per_supplier(self)
         return balance_strategy_obj.balance(my_invoices)
 
     def calculate_total_balance(self):
